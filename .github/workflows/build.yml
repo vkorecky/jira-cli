@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main  # Change this to your main branch name
+      - '*'  # Change this to your main branch name
 
 jobs:
   build:
