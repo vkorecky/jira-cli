@@ -20,6 +20,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("com.atlassian.jira:jira-rest-java-client-core:5.2.4")
     implementation("com.atlassian.jira:jira-rest-java-client-api:5.2.4")
+    implementation("commons-cli:commons-cli:1.6.0")
 }
 
 tasks.test {

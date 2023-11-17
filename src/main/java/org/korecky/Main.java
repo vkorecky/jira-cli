@@ -1,55 +1,50 @@
 package org.korecky;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClients;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import org.apache.commons.cli.*;
 
 public class Main {
     public static void main(String[] args) {
-        // Replace these with your JIRA server details and credentials
-        String jiraServerUrl = "https://your-jira-server.com";
-        String username = "your-username";
-        String password = "your-password";
-
-        // JIRA REST API endpoint for retrieving issue details (replace 'KEY' with the actual issue key)
-        String issueKey = "ABC-12345";
-        String apiUrl = jiraServerUrl + "/rest/api/2/issue/" + issueKey;
-
-        // Create HttpClient
-        HttpClient httpClient = HttpClients.createDefault();
-
-        // Create HTTP GET request
-        HttpGet getRequest = new HttpGet(apiUrl);
-
-        // Set authentication credentials
-        getRequest.setHeader("Authorization", "Basic " + java.util.Base64.getEncoder().encodeToString((username + ":" + password).getBytes()));
+        Options options = new Options()
+                .addOption("url", true, "JIRA server URL")
+                .addOption("username", true, "JIRA username")
+                .addOption("password", true, "JIRA password")
+                .addOption("issue", true, "JIRA issue key")
+                .addOption("help", false, "Print usage information");
 
         try {
-            // Execute the request
-            HttpResponse response = httpClient.execute(getRequest);
+            // Parse command-line arguments
+            CommandLineParser parser = new DefaultParser();
+            CommandLine cmd = parser.parse(options, args);
 
-            // Check for a successful response (HTTP 200)
-            if (response.getStatusLine().getStatusCode() == 200) {
-                // Read and print the response
-                BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    System.out.println(line);
-                }
-            } else {
-                System.err.println("Error: " + response.getStatusLine().getReasonPhrase());
+            // Check if the "help" option is present
+            if (cmd.hasOption("help") || args.length < 3) {
+                printHelp(options);
+                return;
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            // Close the HttpClient
-            httpClient.getConnectionManager().shutdown();
+            // Get JIRA connection details
+            String jiraUrl = cmd.getOptionValue("url");
+            String username = cmd.getOptionValue("username");
+            String password = cmd.getOptionValue("password");
+
+            // Get the issue key (for demonstration purposes)
+            String issueKey = cmd.getOptionValue("issue");
+
+            // Perform some operation with JIRA, e.g., retrieve issue details
+            JiraClient jiraClient = new JiraClient(jiraUrl, username, password);
+            String issueDetails = jiraClient.getIssueDetails(issueKey);
+
+            System.out.println("Issue Details:");
+            System.out.println(issueDetails);
+
+        } catch (ParseException e) {
+            System.err.println("Error parsing command-line arguments: " + e.getMessage());
+            printHelp(options);
         }
+    }
+
+    private static void printHelp(Options options) {
+        HelpFormatter formatter = new HelpFormatter();
+        formatter.printHelp("JiraCommandLineApp", options);
     }
 }
