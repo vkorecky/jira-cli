@@ -1,0 +1,319 @@
+{
+    "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+    "id": "532605",
+    "self": "https://your-jira-server.com/rest/agile/1.0/issue/532605",
+    "key": "Issue-456",
+    "fields": {
+        "fixVersions": [
+            {
+                "self": "https://your-jira-server.com/rest/api/2/version/15119",
+                "id": "15119",
+                "description": "New app version",
+                "name": "app-1.1.1",
+                "archived": false,
+                "released": false
+            }
+        ],
+        "resolution": null,
+        "customfield_10105": "0|hzzytr:304yg00903ry200000000004",
+        "customfield_10106": 3,
+        "customfield_10900": null,
+        "lastViewed": "2023-11-16T13:12:39.040+0000",
+        "epic": {
+            "id": 530674,
+            "key": "Epic-7479",
+            "self": "https://your-jira-server.com/rest/agile/1.0/epic/530674",
+            "name": "Reporting UI business logic",
+            "summary": "Implement business logic for the UI application",
+            "color": {
+                "key": "color_13"
+            },
+            "done": false
+        },
+        "priority": {
+            "self": "https://your-jira-server.com/rest/api/2/priority/10102",
+            "iconUrl": "https://your-jira-server.com/images/icons/priorities/p3.png",
+            "name": "P3",
+            "id": "10102"
+        },
+        "customfield_10100": [
+            "com.atlassian.greenhopper.service.sprint.Sprint@390dd717[id=471,rapidViewId=38,state=CLOSED,name=MySprint,startDate=2023-11-01T18:00:00.000Z,endDate=2023-11-15T18:00:00.000Z,completeDate=2023-11-15T16:36:46.434Z,activatedDate=2023-11-01T18:18:18.179Z,sequence=471,goal=New ordering system,autoStartStop=false,synced=false]",
+            "com.atlassian.greenhopper.service.sprint.Sprint@206cc775[id=476,rapidViewId=38,state=ACTIVE,name=MySprint #2,startDate=2023-11-15T18:00:00.000Z,endDate=2023-11-29T18:00:00.000Z,completeDate=<null>,activatedDate=2023-11-15T18:05:04.642Z,sequence=476,goal=Fix all Netflix bugs (CEB-271 and CEB-273),autoStartStop=false,synced=false]"
+        ],
+        "customfield_10101": "Epic-7479",
+        "labels": [
+            "reporting-ui"
+        ],
+        "customfield_11700": null,
+        "customfield_11702": null,
+        "customfield_11701": null,
+        "customfield_11704": null,
+        "aggregatetimeoriginalestimate": null,
+        "timeestimate": null,
+        "versions": [],
+        "customfield_11703": null,
+        "issuelinks": [],
+        "assignee": {
+            "self": "https://your-jira-server.com/rest/api/2/user?username=jdoe",
+            "name": "jdoe",
+            "key": "JIRAUSER16653",
+            "emailAddress": "jdoe@mycompany.com",
+            "avatarUrls": {
+                "48x48": "https://your-jira-server.com/secure/useravatar?ownerId=JIRAUSER16653&avatarId=13000",
+                "24x24": "https://your-jira-server.com/secure/useravatar?size=small&ownerId=JIRAUSER16653&avatarId=13000",
+                "16x16": "https://your-jira-server.com/secure/useravatar?size=xsmall&ownerId=JIRAUSER16653&avatarId=13000",
+                "32x32": "https://your-jira-server.com/secure/useravatar?size=medium&ownerId=JIRAUSER16653&avatarId=13000"
+            },
+            "displayName": "John Doe",
+            "active": true,
+            "timeZone": "Etc/UTC"
+        },
+        "status": {
+            "self": "https://your-jira-server.com/rest/api/2/status/10100",
+            "description": "",
+            "iconUrl": "https://your-jira-server.com/",
+            "name": "In Review",
+            "id": "10100",
+            "statusCategory": {
+                "self": "https://your-jira-server.com/rest/api/2/statuscategory/4",
+                "id": 4,
+                "key": "indeterminate",
+                "colorName": "yellow",
+                "name": "In Progress"
+            }
+        },
+        "components": [
+            {
+                "self": "https://your-jira-server.com/rest/api/2/component/11007",
+                "id": "11007",
+                "name": "Backend",
+                "description": "Backend services and APIs"
+            }
+        ],
+        "customfield_10203": null,
+        "customfield_10204": null,
+        "customfield_10600": null,
+        "customfield_10205": null,
+        "customfield_10602": null,
+        "customfield_10207": null,
+        "customfield_10603": null,
+        "aggregatetimeestimate": null,
+        "customfield_10604": null,
+        "customfield_10609": null,
+        "creator": {
+            "self": "https://your-jira-server.com/rest/api/2/user?username=ecruz",
+            "name": "ecruz",
+            "key": "JIRAUSER13512",
+            "emailAddress": "ecruz@mycompany.com",
+            "avatarUrls": {
+                "48x48": "https://your-jira-server.com/secure/useravatar?ownerId=JIRAUSER13512&avatarId=11903",
+                "24x24": "https://your-jira-server.com/secure/useravatar?size=small&ownerId=JIRAUSER13512&avatarId=11903",
+                "16x16": "https://your-jira-server.com/secure/useravatar?size=xsmall&ownerId=JIRAUSER13512&avatarId=11903",
+                "32x32": "https://your-jira-server.com/secure/useravatar?size=medium&ownerId=JIRAUSER13512&avatarId=11903"
+            },
+            "displayName": "Elena Cruz",
+            "active": true,
+            "timeZone": "Etc/UTC"
+        },
+        "subtasks": [],
+        "reporter": {
+            "self": "https://your-jira-server.com/rest/api/2/user?username=ecruz",
+            "name": "ecruz",
+            "key": "JIRAUSER13512",
+            "emailAddress": "ecruz@mycompany.com",
+            "avatarUrls": {
+                "48x48": "https://your-jira-server.com/secure/useravatar?ownerId=JIRAUSER13512&avatarId=11903",
+                "24x24": "https://your-jira-server.com/secure/useravatar?size=small&ownerId=JIRAUSER13512&avatarId=11903",
+                "16x16": "https://your-jira-server.com/secure/useravatar?size=xsmall&ownerId=JIRAUSER13512&avatarId=11903",
+                "32x32": "https://your-jira-server.com/secure/useravatar?size=medium&ownerId=JIRAUSER13512&avatarId=11903"
+            },
+            "displayName": "Elena Cruz",
+            "active": true,
+            "timeZone": "Etc/UTC"
+        },
+        "customfield_13311": "false",
+        "customfield_13310": "Enterprise",
+        "aggregateprogress": {
+            "progress": 0,
+            "total": 0
+        },
+        "customfield_10201": null,
+        "customfield_10202": null,
+        "customfield_13306": null,
+        "customfield_13305": null,
+        "customfield_13308": null,
+        "customfield_13307": null,
+        "customfield_13309": null,
+        "closedSprints": [
+            {
+                "id": 471,
+                "self": "https://your-jira-server.com/rest/agile/1.0/sprint/471",
+                "state": "closed",
+                "name": "MySprint",
+                "startDate": "2023-11-01T18:00:00.000Z",
+                "endDate": "2023-11-15T18:00:00.000Z",
+                "completeDate": "2023-11-15T16:36:46.434Z",
+                "activatedDate": "2023-11-01T18:18:18.179Z",
+                "originBoardId": 38,
+                "goal": "New ordering system",
+                "synced": false
+            }
+        ],
+        "progress": {
+            "progress": 0,
+            "total": 0
+        },
+        "votes": {
+            "self": "https://your-jira-server.com/rest/api/2/issue/Issue-456/votes",
+            "votes": 0,
+            "hasVoted": false
+        },
+        "worklog": {
+            "startAt": 0,
+            "maxResults": 20,
+            "total": 0,
+            "worklogs": []
+        },
+        "issuetype": {
+            "self": "https://your-jira-server.com/rest/api/2/issuetype/10100",
+            "id": "10100",
+            "description": "A task that needs to be done.",
+            "iconUrl": "https://your-jira-server.com/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype",
+            "name": "Task",
+            "subtask": false,
+            "avatarId": 10318
+        },
+        "timespent": null,
+        "sprint": {
+            "id": 476,
+            "self": "https://your-jira-server.com/rest/agile/1.0/sprint/476",
+            "state": "active",
+            "name": "MySprint #2",
+            "startDate": "2023-11-15T18:00:00.000Z",
+            "endDate": "2023-11-29T18:00:00.000Z",
+            "activatedDate": "2023-11-15T18:05:04.642Z",
+            "originBoardId": 38,
+            "goal": "Fix all ordeting system bugs",
+            "synced": false
+        },
+        "project": {
+            "self": "https://your-jira-server.com/rest/api/2/project/10102",
+            "id": "10102",
+            "key": "Issue",
+            "name": "My eShop",
+            "projectTypeKey": "software",
+            "avatarUrls": {
+                "48x48": "https://your-jira-server.com/secure/projectavatar?pid=10102&avatarId=10708",
+                "24x24": "https://your-jira-server.com/secure/projectavatar?size=small&pid=10102&avatarId=10708",
+                "16x16": "https://your-jira-server.com/secure/projectavatar?size=xsmall&pid=10102&avatarId=10708",
+                "32x32": "https://your-jira-server.com/secure/projectavatar?size=medium&pid=10102&avatarId=10708"
+            }
+        },
+        "customfield_11000": null,
+        "aggregatetimespent": null,
+        "customfield_11400": null,
+        "customfield_10302": null,
+        "customfield_11116": null,
+        "customfield_10303": null,
+        "customfield_10304": null,
+        "customfield_10305": null,
+        "customfield_10306": null,
+        "customfield_10307": null,
+        "customfield_10308": null,
+        "resolutiondate": null,
+        "customfield_11518": null,
+        "customfield_10706": null,
+        "customfield_10707": null,
+        "workratio": -1,
+        "watches": {
+            "self": "https://your-jira-server.com/rest/api/2/issue/Issue-456/watchers",
+            "watchCount": 15,
+            "isWatching": false
+        },
+        "created": "2023-10-27T08:05:50.000+0000",
+        "customfield_11110": null,
+        "customfield_11111": null,
+        "customfield_11112": {
+            "self": "https://your-jira-server.com/rest/api/2/customFieldOption/11980",
+            "value": "Java",
+            "id": "11980",
+            "disabled": false
+        },
+        "customfield_11113": null,
+        "customfield_10300": null,
+        "customfield_10301": null,
+        "customfield_11105": null,
+        "customfield_11106": null,
+        "customfield_11107": null,
+        "customfield_11108": null,
+        "customfield_11109": null,
+        "updated": "2023-11-17T22:10:59.000+0000",
+        "timeoriginalestimate": null,
+        "description": "As a new user, I want to be able to register for the online platform easily so that I can access personalized features and content.",
+        "customfield_11101": null,
+        "customfield_11102": null,
+        "customfield_11103": null,
+        "timetracking": {},
+        "customfield_11104": {
+            "self": "https://your-jira-server.com/rest/api/2/customFieldOption/11926",
+            "value": "Active",
+            "id": "11926",
+            "disabled": false
+        },
+        "customfield_10800": null,
+        "attachment": [],
+        "flagged": false,
+        "customfield_10802": null,
+        "customfield_10803": null,
+        "customfield_10804": null,
+        "customfield_10805": null,
+        "customfield_10806": null,
+        "summary": "Add ability to call API with UI",        
+        "environment": null,
+        "duedate": null,
+        "comment": {
+            "comments": [
+                {
+                    "self": "https://your-jira-server.com/rest/api/2/issue/532605/comment/1474316",
+                    "id": "1474316",
+                    "author": {
+                        "self": "https://your-jira-server.com/rest/api/2/user?username=user-service",
+                        "name": "user-service",
+                        "key": "user-service",
+                        "emailAddress": "",
+                        "avatarUrls": {
+                            "48x48": "https://your-jira-server.com/secure/useravatar?avatarId=10334",
+                            "24x24": "https://your-jira-server.com/secure/useravatar?size=small&avatarId=10334",
+                            "16x16": "https://your-jira-server.com/secure/useravatar?size=xsmall&avatarId=10334",
+                            "32x32": "https://your-jira-server.com/secure/useravatar?size=medium&avatarId=10334"
+                        },
+                        "displayName": "user-service",
+                        "active": true,
+                        "timeZone": "Etc/UTC"
+                    },
+                    "body": "Promotion build addressing this issue was built. app version: 1.1.1",
+                    "updateAuthor": {
+                        "self": "https://your-jira-server.com/rest/api/2/user?username=user-service",
+                        "name": "user-service",
+                        "key": "user-service",
+                        "emailAddress": "",
+                        "avatarUrls": {
+                            "48x48": "https://your-jira-server.com/secure/useravatar?avatarId=10334",
+                            "24x24": "https://your-jira-server.com/secure/useravatar?size=small&avatarId=10334",
+                            "16x16": "https://your-jira-server.com/secure/useravatar?size=xsmall&avatarId=10334",
+                            "32x32": "https://your-jira-server.com/secure/useravatar?size=medium&avatarId=10334"
+                        },
+                        "displayName": "user-service",
+                        "active": true,
+                        "timeZone": "Etc/UTC"
+                    },
+                    "created": "2023-11-17T22:10:58.705+0000",
+                    "updated": "2023-11-17T22:10:58.705+0000"
+                }
+            ],
+            "maxResults": 1,
+            "total": 1,
+            "startAt": 0
+        }
+    }
+}
