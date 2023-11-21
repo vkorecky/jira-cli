@@ -10,12 +10,15 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.korecky.dto.Issue;
 import org.korecky.dto.Sprint;
+import org.korecky.dto.SprintIssues;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class JiraClient {
@@ -39,13 +42,27 @@ public class JiraClient {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    public Sprint getSprintDetails(String sprintId) throws JsonProcessingException {
+    public Sprint getSprintDetail(String sprintId) throws JsonProcessingException {
         URI apiUrl = URI.create(jiraUrl).resolve("/rest/agile/1.0/sprint/" + sprintId);
         String jsonString = getResponse(apiUrl);
         return objectMapper.readValue(jsonString, Sprint.class);
     }
 
-    public Issue getIssueDetails(String issueKey) throws JsonProcessingException {
+    public List<Issue> getSprintIssues(String sprintId, int maxResultsPerPage) throws JsonProcessingException {
+        boolean nextPage = true;
+        List<Issue> issues = new ArrayList<>();
+        while (nextPage) {
+            URI apiUrl = URI.create(jiraUrl).resolve("/rest/agile/1.0/sprint/" + sprintId + "/issue?startAt=" + issues.size() + "&maxResults=" + maxResultsPerPage);
+            String jsonString = getResponse(apiUrl);
+            SprintIssues sprintIssues = objectMapper.readValue(jsonString, SprintIssues.class);
+            issues.addAll(sprintIssues.getIssues());
+            if (sprintIssues.getTotal() <= issues.size())
+                nextPage = false;
+        }
+        return issues;
+    }
+
+    public Issue getIssueDetail(String issueKey) throws JsonProcessingException {
         URI apiUrl = URI.create(jiraUrl).resolve("/rest/api/2/issue/" + issueKey);
         String jsonString = getResponse(apiUrl);
         return objectMapper.readValue(jsonString, Issue.class);

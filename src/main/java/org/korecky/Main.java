@@ -28,7 +28,7 @@ public class Main {
             String sprintId = cmd.getOptionValue("sprintId");
 
             JiraClient jiraClient = new JiraClient(jiraUrl, username, password);
-            Sprint sprint = jiraClient.getSprintDetails(sprintId);
+            Sprint sprint = jiraClient.getSprintDetail(sprintId);
 
             System.out.println("Sprint Details:");
             System.out.println(sprint);
