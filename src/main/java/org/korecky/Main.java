@@ -1,48 +1,27 @@
 package org.korecky;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import org.apache.commons.cli.*;
+import org.korecky.configuration.Configuration;
 import org.korecky.dto.Sprint;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
-        Options options = new Options()
-                .addOption("help", false, "Print usage information")
-                .addOption("jiraUrl", true, "JIRA server URL")
-                .addOption("username", true, "JIRA username")
-                .addOption("password", true, "JIRA password")
-                .addOption("sprintId", true, "JIRA Sprint ID");
-
-        try {
-            CommandLineParser parser = new DefaultParser();
-            CommandLine cmd = parser.parse(options, args);
-
-            if (cmd.hasOption("help") || args.length < 3) {
-                printHelp(options);
-                return;
-            }
-
-            String jiraUrl = cmd.getOptionValue("jiraUrl");
-            String username = cmd.getOptionValue("username");
-            String password = cmd.getOptionValue("password");
-            String sprintId = cmd.getOptionValue("sprintId");
-
-            JiraClient jiraClient = new JiraClient(jiraUrl, username, password);
-            Sprint sprint = jiraClient.getSprintDetail(sprintId);
-
-            System.out.println("Sprint Details:");
-            System.out.println(sprint);
-
-        } catch (ParseException e) {
-            System.err.println("Error parsing command-line arguments: " + e.getMessage());
-            printHelp(options);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+    public static void main(String[] args) throws IOException {
+        Configuration configuration = loadConfig();
+        Stats stats = new Stats(configuration);
+        stats.generate();
     }
 
-    private static void printHelp(Options options) {
-        HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp("JiraCommandLineApp", options);
+    private static Configuration loadConfig() throws IOException {
+        String homeFolder = System.getProperty("user.home");
+        String configFilePath = homeFolder + File.separator + ".jira-cli" + File.separator + "config.yml";
+
+        ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
+        return objectMapper.readValue(new File(configFilePath), Configuration.class);
     }
 }
