@@ -2,6 +2,7 @@ package org.korecky;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.commons.cli.*;
+import org.korecky.dto.Sprint;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,10 +28,10 @@ public class Main {
             String sprintId = cmd.getOptionValue("sprintId");
 
             JiraClient jiraClient = new JiraClient(jiraUrl, username, password);
-            SprintDetail sprintDetail = jiraClient.getSprintDetails(sprintId);
+            Sprint sprint = jiraClient.getSprintDetail(sprintId);
 
             System.out.println("Sprint Details:");
-            System.out.println(sprintDetail);
+            System.out.println(sprint);
 
         } catch (ParseException e) {
             System.err.println("Error parsing command-line arguments: " + e.getMessage());

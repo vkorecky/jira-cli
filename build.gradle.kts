@@ -25,12 +25,11 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.testng:testng:7.8.0")
     testImplementation("org.mockito:mockito-core:5.7.0")
-    implementation("com.atlassian.jira:jira-rest-java-client-core:5.2.4")
-    implementation("com.atlassian.jira:jira-rest-java-client-api:5.2.4")
     implementation("commons-cli:commons-cli:1.6.0")
+    implementation("org.apache.httpcomponents:httpclient:4.5.14")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.16.0")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda:2.16.0")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.0")
 }
 
 tasks.test {
