@@ -1,7 +1,9 @@
 # jira-cli
+
 Java application for downloading information from JIRA
 
 ## Configuration
+
 Create configuration file "{YOUR_HOME_FOLDER}/.jira-cli/config.yml". And modify the content:
 
 ``` yaml
