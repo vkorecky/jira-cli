@@ -1,11 +1,8 @@
 package org.korecky;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import org.apache.commons.cli.*;
 import org.korecky.configuration.Configuration;
-import org.korecky.dto.Sprint;
 
 import java.io.File;
 import java.io.IOException;

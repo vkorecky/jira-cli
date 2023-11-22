@@ -49,7 +49,7 @@ public class JiraClientTest {
     }
 
     @Test(dataProvider = "getSprintDetailDataProvider")
-    public void getSprintDetail(String sprintId, Sprint expectedSprint, String responseJson) throws Exception {
+    public void getSprintDetail(Integer sprintId, Sprint expectedSprint, String responseJson) throws Exception {
         String url = "https://your-jira-server.com/rest/agile/1.0/sprint/" + sprintId;
         mockResponse(url, responseJson);
 
@@ -58,14 +58,14 @@ public class JiraClientTest {
     }
 
     @Test(dataProvider = "getSprintIssuesDataProvider")
-    public void getSprintIssues(String sprintId, List<Issue> expectedIssues, Integer maxResults, String firstResponseJson, String secondResponseJson) throws Exception {
+    public void getSprintIssues(Integer sprintId, List<Issue> expectedIssues, Integer maxResults, String firstResponseJson, String secondResponseJson) throws Exception {
         String url1 = "https://your-jira-server.com/rest/agile/1.0/sprint/" + sprintId + "/issue?startAt=0&maxResults=" + maxResults;
         mockResponse(url1, firstResponseJson);
         String url2 = "https://your-jira-server.com/rest/agile/1.0/sprint/" + sprintId + "/issue?startAt=1&maxResults=" + maxResults;
         mockResponse(url2, secondResponseJson);
 
         List<Issue> issues = jiraClient.getSprintIssues(sprintId, maxResults);
-        for (int i=0; i<issues.size(); i++){
+        for (int i = 0; i < issues.size(); i++) {
             Assert.assertEquals(issues.get(i).getId(), expectedIssues.get(i).getId());
             Assert.assertEquals(issues.get(i).getKey(), expectedIssues.get(i).getKey());
             Assert.assertEquals(issues.get(i).getSelf(), expectedIssues.get(i).getSelf());
@@ -89,7 +89,7 @@ public class JiraClientTest {
     Object[][] getSprintDetailDataProvider() {
         return new Object[][]{
                 {
-                        "123",
+                        123,
                         Sprint.builder()
                                 .id(123)
                                 .self("https://your-jira-instance/rest/agile/1.0/sprint/123")
@@ -124,18 +124,18 @@ public class JiraClientTest {
     Object[][] getSprintIssuesDataProvider() {
         return new Object[][]{
                 {
-                        "123",
+                        123,
                         List.of(
-                            Issue.builder()
-                                    .id(532605)
-                                    .key("Issue-456")
-                                    .self("https://your-jira-server.com/rest/agile/1.0/issue/532605")
-                                    .build(),
-                            Issue.builder()
-                                    .id(1)
-                                    .key("Issue-1")
-                                    .self("https://your-jira-server.com/rest/agile/1.0/issue/1")
-                                    .build()
+                                Issue.builder()
+                                        .id(532605)
+                                        .key("Issue-456")
+                                        .self("https://your-jira-server.com/rest/agile/1.0/issue/532605")
+                                        .build(),
+                                Issue.builder()
+                                        .id(1)
+                                        .key("Issue-1")
+                                        .self("https://your-jira-server.com/rest/agile/1.0/issue/1")
+                                        .build()
                         ),
                         1,
                         """
@@ -459,7 +459,6 @@ public class JiraClientTest {
                 }
         };
     }
-
 
 
     @DataProvider

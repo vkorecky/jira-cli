@@ -42,13 +42,13 @@ public class JiraClient {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    public Sprint getSprintDetail(String sprintId) throws JsonProcessingException {
+    public Sprint getSprintDetail(int sprintId) throws JsonProcessingException {
         URI apiUrl = URI.create(jiraUrl).resolve("/rest/agile/1.0/sprint/" + sprintId);
         String jsonString = getResponse(apiUrl);
         return objectMapper.readValue(jsonString, Sprint.class);
     }
 
-    public List<Issue> getSprintIssues(String sprintId, int maxResultsPerPage) throws JsonProcessingException {
+    public List<Issue> getSprintIssues(int sprintId, int maxResultsPerPage) throws JsonProcessingException {
         boolean nextPage = true;
         List<Issue> issues = new ArrayList<>();
         while (nextPage) {
