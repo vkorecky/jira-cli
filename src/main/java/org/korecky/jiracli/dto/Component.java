@@ -1,4 +1,4 @@
-package org.korecky.dto;
+package org.korecky.jiracli.dto;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
@@ -12,9 +12,9 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Issue implements Serializable {
-    private int id;
-    private String key;
-    private String self;
-    private JsonNode fields;
+public class Component implements Serializable {
+    int id;
+    String name;
+    String self;
+    String description;
 }

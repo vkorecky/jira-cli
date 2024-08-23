@@ -1,4 +1,4 @@
-package org.korecky.configuration;
+package org.korecky.jiracli.configuration;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

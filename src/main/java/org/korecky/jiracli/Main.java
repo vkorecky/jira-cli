@@ -1,8 +1,8 @@
-package org.korecky;
+package org.korecky.jiracli;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import org.korecky.configuration.Configuration;
+import org.korecky.jiracli.configuration.Configuration;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,8 +10,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         Configuration configuration = loadConfig();
-        Stats stats = new Stats(configuration);
-        stats.generate();
+        Reports reports = new Reports(configuration);
+        reports.generate();
     }
 
     private static Configuration loadConfig() throws IOException {
