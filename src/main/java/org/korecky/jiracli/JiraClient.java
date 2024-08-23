@@ -1,16 +1,15 @@
-package org.korecky;
+package org.korecky.jiracli;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.korecky.dto.Issue;
-import org.korecky.dto.Sprint;
-import org.korecky.dto.SprintIssues;
+import org.apache.poi.util.StringUtil;
+import org.korecky.jiracli.dto.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,8 +25,8 @@ public class JiraClient {
     private final String jiraUrl;
     private final String username;
     private final String password;
-    private final CloseableHttpClient httpClient;
     private final ObjectMapper objectMapper;
+    private final CloseableHttpClient httpClient;
 
 
     public JiraClient(String jiraUrl, String username, String password) {
@@ -51,13 +50,28 @@ public class JiraClient {
     public List<Issue> getSprintIssues(int sprintId, int maxResultsPerPage) throws JsonProcessingException {
         boolean nextPage = true;
         List<Issue> issues = new ArrayList<>();
+        int startAt = 0;
         while (nextPage) {
-            URI apiUrl = URI.create(jiraUrl).resolve("/rest/agile/1.0/sprint/" + sprintId + "/issue?startAt=" + issues.size() + "&maxResults=" + maxResultsPerPage);
+            URI apiUrl = URI.create(jiraUrl).resolve("/rest/agile/1.0/sprint/" + sprintId + "/issue?startAt=" + startAt + "&maxResults=" + maxResultsPerPage);
             String jsonString = getResponse(apiUrl);
-            SprintIssues sprintIssues = objectMapper.readValue(jsonString, SprintIssues.class);
-            issues.addAll(sprintIssues.getIssues());
-            if (sprintIssues.getTotal() <= issues.size())
+            if (StringUtil.isNotBlank(jsonString)) {
+                SprintIssues sprintIssues = objectMapper.readValue(jsonString, SprintIssues.class);
+                for (Issue issue : sprintIssues.getIssues()) {
+                    Assignee assignee = objectMapper.readValue(String.valueOf(issue.getFields().findValue("assignee")), Assignee.class);
+                    issue.setAssignee(assignee);
+                    List<Component> components = objectMapper.readerForListOf(Component.class).readValue(String.valueOf(issue.getFields().findValue("components")));
+                    issue.setComponents(components);
+                    List<String> labels = objectMapper.readerForListOf(String.class).readValue(String.valueOf(issue.getFields().findValue("labels")));
+                    issue.setLabels(labels);
+                    issues.add(issue);
+                }
+                startAt = issues.size() - 1;
+                if (sprintIssues.getTotal() <= issues.size())
+                    nextPage = false;
+            }
+            else {
                 nextPage = false;
+            }
         }
         return issues;
     }
@@ -77,10 +91,7 @@ public class JiraClient {
             // Set authentication credentials
             getRequest.setHeader("Authorization", "Basic " + java.util.Base64.getEncoder().encodeToString((username + ":" + password).getBytes()));
 
-            try {
-                // Execute the request
-                HttpResponse response = httpClient.execute(getRequest);
-
+            try (CloseableHttpResponse response = httpClient.execute(getRequest)) {
                 // Check for a successful response (HTTP 200)
                 if (response.getStatusLine().getStatusCode() == 200) {
                     // Read and print the response

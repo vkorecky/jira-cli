@@ -27,12 +27,12 @@ dependencies {
     testImplementation("org.mockito:mockito-core:5.7.0")
     implementation("commons-cli:commons-cli:1.6.0")
     implementation("org.apache.httpcomponents:httpclient:4.5.14")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.16.0")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.16.0")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.16.0")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.16.0")
-    implementation("com.opencsv:opencsv:5.8")
-
+    implementation("org.apache.poi:poi-ooxml:5.2.5")
 }
 
 tasks.test {

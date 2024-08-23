@@ -1,4 +1,4 @@
-package org.korecky;
+package org.korecky.jiracli;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.ProtocolVersion;
@@ -6,8 +6,8 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicStatusLine;
-import org.korecky.dto.Issue;
-import org.korecky.dto.Sprint;
+import org.korecky.jiracli.dto.Issue;
+import org.korecky.jiracli.dto.Sprint;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;

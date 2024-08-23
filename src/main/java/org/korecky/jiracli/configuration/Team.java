@@ -1,4 +1,4 @@
-package org.korecky.dto;
+package org.korecky.jiracli.configuration;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,10 +11,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SprintIssues {
-    String expand;
-    int startAt;
-    int maxResults;
-    int total;
-    List<Issue> issues;
+public class Team {
+    private String name;
+    private List<String> members;
+    private List<String> components;
 }
