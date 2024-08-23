@@ -180,9 +180,8 @@ public class Reports {
     private String getEpicName(Issue issue) {
         JsonNode fields = issue.getFields();
         JsonNode epic = fields.findValue("epic");
-        if (epic == null)
+        if ((epic == null) || (epic.isEmpty()))
             return EMPTY_EPIC;
-        JsonNode epicKey = epic.findValue("key");
         JsonNode epicSummary = epic.findValue("summary");
         return epicSummary.asText();
     }
