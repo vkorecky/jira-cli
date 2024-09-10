@@ -220,6 +220,8 @@ public class Reports {
     private Double getStoryPoints(Issue issue) {
         JsonNode fields = issue.getFields();
         JsonNode storyPoints = fields.findValue(configuration.getStoryPointsColumn());
+        if (storyPoints == null)
+            return 0.0;
         return storyPoints.asDouble();
     }
 
@@ -238,7 +240,7 @@ public class Reports {
 
         JsonNode fields = issue.getFields();
         JsonNode currentSprint = fields.findValue("sprint");
-        if (currentSprint == null){
+        if ((currentSprint == null) || (currentSprint.findValue("id") == null)) {
             JsonNode closedSprints = fields.findValue("closedSprints");
             if ((closedSprints == null) || (closedSprints.size() <= 0))
                 return false;

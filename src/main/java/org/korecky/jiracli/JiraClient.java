@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List; 
 
 
 public class JiraClient {
