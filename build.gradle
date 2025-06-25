@@ -49,6 +49,18 @@ dependencies {
     implementation 'org.apache.poi:poi-ooxml:5.4.1'
 }
 
+configurations.all {
+    resolutionStrategy {
+        // Force all Log4j 2 modules to use the same version to prevent NoSuchMethodError
+        eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'org.apache.logging.log4j') {
+                details.useVersion '2.23.1'
+            }
+        }
+    }
+}
+
 // Configure the test task to use TestNG as the test runner.
 test {
     useTestNG()
